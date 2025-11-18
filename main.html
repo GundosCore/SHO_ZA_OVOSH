@@ -1,11 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Neural - Распознавание овощей</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <span class="logo-text">Neural</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#work-area" class="nav-link active" data-target="work-area">Рабочая область</a></li>
+                    <li><a href="#team" class="nav-link" data-target="team">Команда</a></li>
+                    <li><a href="#description" class="nav-link" data-target="description">О проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Рабочая область -->
+        <section id="work-area" class="section active">
+            <div class="container">
+                <h1>Распознавание овощей по изображению</h1>
+                <p class="section-subtitle">Загрузите изображение овоща, и наша нейросеть определит его вид и вероятность.</p>
+
+                <!-- Поле загрузки изображения -->
+                <div class="upload-section">
+                    <div class="upload-area" id="upload-area">
+                        <p>Перетащите изображение сюда или нажмите для выбора</p>
+                        <input type="file" id="file-input" accept="image/*" style="display: none;">
+                        <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Выбрать файл</button>
+                    </div>
+                </div>
+
+                <!-- Основная рабочая область с тремя блоками -->
+                <div class="work-layout">
+                    <!-- Левый блок: список овощей -->
+                    <div class="vegetable-list">
+                        <h3>Поддерживаемые овощи</h3>
+                        <div class="list-content">
+                            <div class="list-item">
+                                <span class="item-icon">🍅</span>
+                                <span class="item-name">Помидор</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="item-icon">🥬</span>
+                                <span class="item-name">Капуста</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="item-icon">🥕</span>
+                                <span class="item-name">Морковь</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="item-icon">🥒</span>
+                                <span class="item-name">Огурец</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="item-icon">🥔</span>
+                                <span class="item-name">Картофель</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Центральный блок: итоговое изображение -->
+                    <div class="result-center">
+                        <div class="result-image-container">
+                            <img id="preview-image" src="" alt="Предварительный просмотр" style="display: none; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                            <div id="no-image-message" class="no-image-message">
+                                <p>Загрузите изображение для распознавания</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правый блок: результаты распознавания -->
+                    <div class="results-panel">
+                        <h3>Результаты распознавания</h3>
+                        <div class="probabilities">
+                            <div class="probability-item">
+                                <span>Помидор</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Капуста</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Морковь</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Огурец</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Картофель</span>
+                                <span class="probability">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Команда -->
+        <section id="team" class="section">
+            <div class="container">
+                <h1>Наша команда</h1>
+                <p class="section-subtitle">Заглушка для информации о команде</p>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>Имя Фамилия</h3>
+                        <p>Должность</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>Имя Фамилия</h3>
+                        <p>Должность</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Описание проекта -->
+        <section id="description" class="section">
+            <div class="container">
+                <h1>О проекте</h1>
+                <p class="section-subtitle">Заглушка для описания проекта</p>
+
+                <div class="project-info">
+                    <h2>Что это за проект</h2>
+                    <p>Это нейросеть для распознавания овощей по изображению. Заглушка текста.</p>
+
+                    <h2>Ссылки</h2>
+                    <ul>
+                        <li><a href="#">GitHub репозиторий</a></li>
+                        <li><a href="#">Контакты команды</a></li>
+                    </ul>
+
+                    <h2>Распознаваемые овощи</h2>
+                    <ul>
+                        <li>Помидор</li>
+                        <li>Капуста</li>
+                        <li>Морковь</li>
+                        <li>Огурец</li>
+                        <li>Картофель</li>
+                    </ul>
+
+                    <h2>Информация о разработке</h2>
+                    <p>Заглушка информации о разработке.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Neural - Распознавание овощей. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключение JavaScript -->
+    <script src="main.js"></script>
 </body>
 </html>
