@@ -209,19 +209,16 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 1px;
     background-color: white;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.list-item:hover {
-    background-color: #e9ecef;
-}
 
 .item-icon {
-    font-size: 20px;
+    width: 70px;
 }
 
 /* Центральный блок: итоговое изображение */
@@ -358,4 +355,10 @@ body {
     .upload-area {
         max-width: 100%;
     }
+}
+
+.DSTUlogo {
+  display: block;
+  margin: 0 auto;
+  width:10%; 
 }
