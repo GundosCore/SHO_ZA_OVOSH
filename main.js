@@ -89,3 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Копируем высоту правого блока в левый
+document.addEventListener('DOMContentLoaded', function() {
+    const resultsPanel = document.querySelector('.results-panel');
+    const vegetableList = document.querySelector('.vegetable-list');
+
+    if (resultsPanel && vegetableList) {
+        vegetableList.style.height = resultsPanel.offsetHeight + 'px';
+    }
+});

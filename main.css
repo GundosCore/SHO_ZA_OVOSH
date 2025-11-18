@@ -195,10 +195,14 @@ body {
     text-align: center;
 }
 
+/* Ограничиваем высоту списка и включаем прокрутку */
 .list-content {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 300px; /* Подберите под высоту "Результаты распознавания" */
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
 .list-item {
@@ -279,16 +283,23 @@ body {
 }
 
 .member-card {
-    background-color: #F8F9FA;
+    background-color: #e1e2e3;
     padding: 25px;
     border-radius: 12px;
     text-align: center;
-    width: 200px;
+    width: 270px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border: 3px solid #3C8536;
 }
 
 .member-avatar {
-    font-size: 48px;
+    width:190px;
+    height: 230px;
+    border-radius: 10%;
+    object-fit: cover;
     margin-bottom: 15px;
+    border: 1px solid #000000;
 }
 
 /* Описание проекта */
