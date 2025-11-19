@@ -38,6 +38,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file-input');
     const previewImage = document.getElementById('preview-image');
     const noImageMessage = document.getElementById('no-image-message');
+    const uploadArea = document.getElementById('upload-area');
+    
+    // Функция для обновления результатов
+    function updateResults(predictions) {
+        const resultsContainer = document.querySelector('.probabilities');
+        resultsContainer.innerHTML = ''; // Очищаем предыдущие результаты
+        
+        // Добавляем 5 самых вероятных результатов
+        predictions.slice(0, 5).forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'probability-item';
+            resultItem.innerHTML = `
+                <span>${item.class}</span>
+                <span class="probability">${item.probability.toFixed(2)}%</span>
+            `;
+            resultsContainer.appendChild(resultItem);
+        });
+    }
+    
+    // Функция для отправки изображения на сервер и получения результатов
+    async function predictImage(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        try {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            updateResults(data.predictions);
+        } catch (error) {
+            console.error('Ошибка при предсказании:', error);
+            alert('Ошибка при предсказании: ' + error.message);
+        }
+    }
     
     fileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -47,14 +88,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 previewImage.src = e.target.result;
                 previewImage.style.display = 'block';
                 noImageMessage.style.display = 'none';
+                
+                // Отправляем изображение на сервер для предсказания
+                predictImage(file);
             };
             reader.readAsDataURL(file);
         }
     });
     
     // Добавляем обработчик для drag and drop
-    const uploadArea = document.getElementById('upload-area');
-    
     uploadArea.addEventListener('dragover', function(e) {
         e.preventDefault();
         this.style.borderColor = '#3C8536';
@@ -78,6 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     previewImage.src = e.target.result;
                     previewImage.style.display = 'block';
                     noImageMessage.style.display = 'none';
+                    
+                    // Отправляем изображение на сервер для предсказания
+                    predictImage(file);
                 };
                 reader.readAsDataURL(file);
                 
