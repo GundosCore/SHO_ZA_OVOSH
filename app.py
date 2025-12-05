@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import numpy as np
 from PIL import Image
 import io
 import tensorflow as tf
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='assets', static_url_path='/assets')
 CORS(app)  # Включаем CORS для всех маршрутов
 
 # Загружаем обученную модель
@@ -78,6 +78,11 @@ def predict():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/')
+def main():
+    return render_template('main.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

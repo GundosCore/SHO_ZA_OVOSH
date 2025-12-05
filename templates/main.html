@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHO ZA OVOSH</title>
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <span class="logo-text">SHO ZA OVOSH</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#work-area" class="nav-link active" data-target="work-area">Рабочая область</a></li>
+                    <li><a href="#team" class="nav-link" data-target="team">Команда</a></li>
+                    <li><a href="#description" class="nav-link" data-target="description">О проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Рабочая область -->
+        <section id="work-area" class="section active">
+            <div class="container">
+                <h1>Распознавание овощей по изображению</h1>
+                <p class="section-subtitle">Загрузите изображение овоща, и наша нейросеть определит его вид и вероятность.</p>
+
+                <!-- Поле загрузки изображения -->
+                <div class="upload-section">
+                    <div class="upload-area" id="upload-area">
+                        <p>Перетащите изображение сюда или нажмите для выбора</p>
+                        <input type="file" id="file-input" accept="image/*" style="display: none;">
+                        <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Выбрать файл</button>
+                    </div>
+                </div>
+
+                <!-- Основная рабочая область с тремя блоками -->
+                <div class="work-layout">
+                    <!-- Левый блок: список овощей -->
+                    <div class="vegetable-list">
+                        <h3>Поддерживаемые овощи</h3>
+                        <div class="list-content">
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/beetroot.png"></span>
+                                <span class="item-name">Свёкла</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/pepper.png"></span>
+                                <span class="item-name">Болгарский перец</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/cabbage.png"></span>
+                                <span class="item-name">Капуста</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/corn.png"></span>
+                                <span class="item-name">Кукуруза</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/cucumber.png"></span>
+                                <span class="item-name">Огурец</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/eggplant.png"></span>
+                                <span class="item-name">Баклажан</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/garlic.png"></span>
+                                <span class="item-name">Чеснок</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/onion.png"></span>
+                                <span class="item-name">Лук</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/orange.png"></span>
+                                <span class="item-name">Апельсин</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/pea.png"></span>
+                                <span class="item-name">Горох</span>
+                            </div>
+                            <div class="list-item">
+                                <span><img class="item-icon" src="assets/ovoshi/potato.png"></span>
+                                <span class="item-name">Картофель</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Центральный блок: итоговое изображение -->
+                    <div class="result-center">
+                        <div class="result-image-container">
+                            <img id="preview-image" src="" alt="Предварительный просмотр" style="display: none; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                            <div id="no-image-message" class="no-image-message">
+                                <p>Загрузите изображение для распознавания</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правый блок: результаты распознавания -->
+                    <div class="results-panel">
+                        <h3>Результаты распознавания</h3>
+                        <div class="probabilities">
+                            <div class="probability-item">
+                                <span>Помидор</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Капуста</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Морковь</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Огурец</span>
+                                <span class="probability">0%</span>
+                            </div>
+                            <div class="probability-item">
+                                <span>Картофель</span>
+                                <span class="probability">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Команда -->
+        <section id="team" class="section">
+            <div class="container">
+                <h1>Наша команда</h1>
+                <p class="section-subtitle">Состав команды разработки</p>
+                <div class="team-members">
+                    <div class="member-card">
+                        <img src="assets/Stanislav.jpg" alt="Соловцов Станислав" class="member-avatar">
+                        <h3>Станислав Соловцов</h3>
+                        <p>Фронтенд - составляющая</p>
+                    </div>
+                    <div class="member-card">
+                        <img src="assets/Vladimir.jpg" alt="Псюрников Владимир" class="member-avatar">
+                        <h3>Владимир Псюрников</h3>
+                        <p>ТимЛид, составляющая датасета</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="Nikitos">
+                            <img src="assets/Nikita.jpg" alt="Скворцов Никита" class="member-avatar" id="Nikitos">
+                        </div>
+                        <h3>Никита Скворцов</h3>
+                        <p>Бэкенд - обучение сети</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Описание проекта -->
+        <section id="description" class="section">
+            <div class="container">
+                <img src="assets/DSTU.png" class="DSTUlogo">
+                <h1>О проекте</h1>
+                <p class="section-subtitle">Кратко: данная нейросеть способна распознавать овощ по фотографии</p>
+
+                <div class="project-info">
+                    <h2>Что это за проект</h2>
+                    <h3>Как это работает?</h3>
+                        <ul>
+                            <li>Пользователь загружает фотографию в веб-интерфейс нейросети.</li>
+                            <li>Нейросеть анализирует изображение и распознаёт, что за овощ на фото, в процентном соотношении.</li>
+                            <li>Результат выводится в удобном формате: на интерфейсе высвечивается список возможных вариантов: 4 самых вероятных овоща (ответ будет более-менее однозначным) и самый !вероятный.</li>
+                        </ul>
+
+                    <h3>Применение</h3>
+                        <p style="text-indent: 5%;">Применение данного рода программы связанно в первую очередь с усиленным <ins> дообучением</ins> нейросети поскольку команда проекта не имеет достаточных ресурсов для полноценного создания более мощной модели.</p> 
+                        <br>
+                        <p><ins>После</ins> выполнения данного условия нейросеть можно будет использовать следующим образом:</p>
+                        <p style="text-indent: 3%;"><strong>Применение в супермаркетах и других магазинах. </strong>Можно внедрить нейросеть в кассы самообслуживания, настроить под ассортимент магазина и при взвешивании весовых товаров камера будет определять продукт. Данная функция как упростит покупателю поиск нужного товара на весах, так и в какой-либо степени защитит от мошенников, пытающихся купить более дорогой товар, пробивая его как дешёвый</p>
+                        <p style="text-indent: 3%;">Кроме того, разумеется, нейросеть так же подходит для клиентского пользования, то есть "загуглить", что это на фото</p>
+                    <br><br>
+                    <h3>Польза и преимущества</h3>
+                        <ul>
+                            <li><strong>Экономия времени:</strong> Покупателю больше нет необходимости вручную искать товар без штрихкода, это добавляет как удобство, так и скорость покупок.</li>
+                            <li><strong>Экономия пространства:</strong> В связи с ускорением покупок клиентом, касс самообслуживания будет нужно в целом меньше, что освободит драгоценное пространство под другие нужды.</li>
+                            <li><strong>Экономия финансов <em>(предположительная)</em>:</strong> Оснастить простой камерой и программой кассу самообслуживания будет предположительно дешевле, чем ставить ещё одну.</li>
+                            <li><strong>Работает офлайн:</strong> Модель представляет собой уже обученную нейросеть, для её работы нет необходимости в подключении к интернету.</li>
+                        </ul>
+
+                    <h2>Разработка</h2>
+                    <p>Поскольку для точного определения овоща необходимо использовать свёрточную нейросеть, <ins>командой была не обучена с нуля, а <em>дообучена</em></ins> настроенная под распознавание изображений нейросетевая модель <strong>MobileNetV2</strong>.</p>
+                    <br>
+                    <p>Модели был предоставлен датасет из 100+ фотографий на каждый овощ, было проведено обучение при помощи некоторых библиотек на языке <strong><em>python</em></strong>. Их названия и применение описаны ниже:</p>
+                    <ol>
+                        <li><strong>TensorFlow</strong>: Основная библиотека для создания и обучения нейросетей. Включает в себя реализацию MobileNetV2 и все необходимые слои.</li>
+                        <li><strong>Keras</strong>: Высокоуровневый API TensorFlow, использовался для построения модели, генераторов данных и компиляции сети.</li>
+                        <li><strong>NumPy</strong>: Использовался для операций с массивами данных, необходимых при предобработке изображений.</li>
+                        <li><strong>Matplotlib</strong>: Применялась для визуализации процесса обучения (графики точности и потерь).</li>
+                        <li><strong>Pillow (PIL)</strong>: Используется для загрузки и обработки изображений в Python.</li>
+                    </ol>
+                    <br>
+                    <p><strong>Обучение нейросети:</strong></p>
+                    <p>Обучение модели происходило в два этапа на платформе Google Colab.</p>
+                    <ul>
+                        <li><strong>Этап 1: Обучение "головы" (Head Training)</strong>
+                            <ul>
+                                <li>Базовая модель MobileNetV2 была загружена с предобученными весами ImageNet, но её слои были заморожены.</li>
+                                <li>Добавлены новые слои: GlobalAveragePooling2D, Dropout (0.4), Dense (256, ReLU), Dropout (0.4), и Dense (число_классов, Softmax).</li>
+                                <li>Модель обучалась в течение <strong>15 эпох</strong> с оптимизатором Adam (learning rate = 1e-4).</li>
+                                <li>Для улучшения обобщающей способности использовалась аугментация данных (повороты, сдвиги, зум и т.д.).</li>
+                                <li>Применялись Callbacks: EarlyStopping (patience=4) и ReduceLROnPlateau (factor=0.3).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Этап 2: Дообучение (Fine-Tuning)</strong>
+                            <ul>
+                                <li>После первого этапа была разморожена верхняя половина слоёв MobileNetV2 (примерно половина от общего числа).</li>
+                                <li>Модель снова обучалась в течение <strong>15 эпох</strong>, но с меньшим learning rate (1e-5), чтобы не "сломать" уже полезные признаки в нижних слоях.</li>
+                                <li>Этот этап позволил модели адаптироваться к специфике нашего датасета.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>После завершения обучения модель была сохранена в формате .h5 и используется в backend-части приложения.</p>
+                    <br>
+                    <h3>Backend</h3>
+                    <p>Backend приложения реализован на Python с использованием веб-фреймворка <strong>Flask</strong>. Его основная задача - принимать изображения от веб-интерфейса, обрабатывать их и возвращать результаты распознавания от нейросети.</p>
+                    <ul>
+                        <li><strong>Flask</strong>: Создаёт веб-сервер и определяет API-эндпоинты. В данном случае, используется один маршрут - <code>/predict</code> методом POST.</li>
+                        <li><strong>Flask-CORS</strong>: Обеспечивает корректную работу с веб-интерфейсом, разрешая кросс-доменные запросы (CORS).</li>
+                        <li><strong>TensorFlow/Keras</strong>: Используется для загрузки обученной модели (<code>vegetable_finetuned.h5</code>) и выполнения предсказаний (<code>model.predict()</code>).</li>
+                        <li><strong>Pillow (PIL) и NumPy</strong>: Применяются для открытия, изменения размера и преобразования изображения в формат, пригодный для подачи в нейросеть.</li>
+                    </ul>
+                    <p>Когда пользователь загружает изображение в интерфейсе, оно отправляется на сервер. Там происходит следующий процесс:</p>
+                    <ol>
+                        <li>Сервер проверяет, был ли загружен файл.</li>
+                        <li>Изображение читается в формате байтов.</li>
+                        <li>Функция <code>preprocess_image</code> открывает изображение, конвертирует его в RGB (если нужно), изменяет размер до 224x224 пикселей, применяет препроцессинг, необходимый для MobileNetV2, и добавляет размерность батча.</li>
+                        <li>Обработанное изображение подаётся в нейросеть (<code>model.predict()</code>), которая возвращает массив вероятностей для каждого класса.</li>
+                        <li>Сервер сортирует 5 самых вероятных классов и возвращает их названия и вероятности в формате JSON.</li>
+                        <li>Этот JSON отправляется обратно во frontend, где результаты отображаются пользователю.</li>
+                    </ol>
+                    <p>Сервер запускается локально и слушает порт 5000, обеспечивая автономную работу всего приложения.</p>
+                    <br>
+                    <h3>Frontend</h3>
+                    <p>Frontend реализован с помощью <strong>HTML</strong>, <strong>CSS</strong> и <strong>JavaScript</strong> и представляет собой интерактивный веб-интерфейс, который взаимодействует с backend-сервером.</p>
+                    <ul>
+                        <li><strong>HTML</strong>: Создаёт структуру страницы, включая навигацию, область загрузки изображений, панель с поддерживаемыми овощами и область отображения результатов.</li>
+                        <li><strong>CSS</strong>: Отвечает за визуальное оформление, адаптивность и удобство использования интерфейса.</li>
+                        <li><strong>JavaScript</strong>: Обеспечивает динамическое поведение страницы, включая переключение между разделами, загрузку изображений (в том числе drag & drop) и отправку данных на backend.</li>
+                    </ul>
+                    <p>При загрузке изображения пользователем (через кнопку или drag & drop) происходит следующее:</p>
+                    <ol>
+                        <li>Изображение читается в браузере с помощью <code>FileReader</code> и отображается в центральной области интерфейса.</li>
+                        <li>Файл автоматически отправляется на backend (локальный сервер Flask на <code>http://localhost:5000</code>) с помощью асинхронного запроса <code>fetch</code> с методом POST.</li>
+                        <li>После получения JSON-ответа с результатами от нейросети, функция <code>updateResults</code> обновляет правую панель, отображая 5 самых вероятных классов и их вероятности.</li>
+                    </ol>
+                    <p>Таким образом, интерфейс обеспечивает простое и интуитивно понятное взаимодействие с нейросетью, скрывая сложные технические детали от пользователя.</p>
+
+                    <h2>Распознаваемые овощи</h2>
+                    <h4> На данный момент модель способна распознавать 10 видов овощей и 1 фрукт</h4>
+                    <ul>
+                        <li>Свёкла</li>
+                        <li>Болгарский перец</li>
+                        <li>Капуста</li>
+                        <li>Кукуруза</li>
+                        <li>Огурец</li>
+                        <li>Баклажан</li>
+                        <li>Чеснок</li>
+                        <li>Лук</li>
+                        <li>Апельсин</li>
+                        <li>Горох</li>
+                        <li>Картофель</li>
+                    </ul>
+
+                    <h2>Ссылки</h2>
+                    <ul>
+                        <li><a href="https://github.com/GundosCore/SHO_ZA_OVOSH?tab=readme-ov-file" target="_blank">GitHub репозиторий</a></li>
+                        <li><a href="https://t.me/Palto200501" target="_blank">Телеграм для связи с командой</a></li>
+                        <li><a href="">Код для обучения нейросети</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Neural - Распознавание овощей. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключение JavaScript -->
+    <script src="assets/main.js"></script>
+</body>
+</html>
