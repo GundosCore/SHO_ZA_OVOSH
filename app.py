@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder='assets', static_url_path='/assets')
 CORS(app)  # Включаем CORS для всех маршрутов
 
 # Загружаем обученную модель
-model = tf.keras.models.load_model('vegetable_finetuned.h5')
+model = tf.keras.models.load_model('vegetable_model.keras')
 
 # Определяем классы овощей
 class_names = [
